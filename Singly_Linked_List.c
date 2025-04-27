@@ -9,6 +9,18 @@ struct Node {
 
 struct Node* head = NULL;
 
+void createInitialList() {
+    int initialData[] = {10, 20, 30}; // Example values
+    int n = sizeof(initialData) / sizeof(initialData[0]);
+    for (int i = n - 1; i >= 0; i--) {  // Insert at beginning to maintain order
+        struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+        newNode->data = initialData[i];
+        newNode->next = head;
+        head = newNode;
+    }
+    printf("Initial linked list created.\n");
+}
+
 void insertAtBeginning() {
     struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
     int value;
@@ -139,6 +151,7 @@ void display() {
 
 int main() {
     int choice;
+    createInitialList();
     while (1) {
         printf("\n--- Singly Linked List Operations Menu ---\n");
         printf("1. Insert at Beginning\n");
